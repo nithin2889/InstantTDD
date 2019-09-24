@@ -4,10 +4,7 @@ import static com.instanttdd.mockito.article.Type.POLITICS;
 import static com.instanttdd.mockito.article.Type.SPORT;
 import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.instanttdd.mockito.article.Article;
 import com.instanttdd.mockito.client.Channel;
