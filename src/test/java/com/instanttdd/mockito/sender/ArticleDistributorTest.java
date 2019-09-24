@@ -4,26 +4,34 @@ import static com.instanttdd.mockito.article.Type.POLITICS;
 import static com.instanttdd.mockito.article.Type.SPORT;
 import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import com.instanttdd.mockito.article.Article;
-import com.instanttdd.mockito.client.Channel;
+import com.instanttdd.mockito.client.EntertainmentChannel;
+import com.instanttdd.mockito.client.OtherChannel;
+import com.instanttdd.mockito.client.SportsChannel;
 import com.instanttdd.mockito.database.ArticleDataAccess;
 import java.util.List;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ArticleDistributorTest {
+
+  @Mock private SportsChannel sport;
+  @Mock private EntertainmentChannel entertainment;
+  @Mock private OtherChannel others;
+  @Mock private ArticleDataAccess dataAccess;
+
+  @InjectMocks private ArticleDistributor distributor;
 
   @Test
   public void sportGoesToSportPoliticsToOther() {
-    Channel sport = mock(Channel.class);
-    Channel entertainment = mock(Channel.class);
-    Channel others = mock(Channel.class);
-    ArticleDataAccess dataAccess = mock(ArticleDataAccess.class);
-
-    ArticleDistributor distributor =
-        new ArticleDistributor(sport, entertainment, others, dataAccess);
-
     // given this list of articles is returned from the database.
     List<Article> articleList =
         asList(new Article("Sports is fun", SPORT), new Article("Politics is sad", POLITICS));
