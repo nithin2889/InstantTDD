@@ -12,8 +12,10 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("Ignoring currently")
 public class AssertionExamplesTest {
   @Test
   public void testAssertTrue() {
@@ -51,9 +53,10 @@ public class AssertionExamplesTest {
     assertEquals(140, rectangle.getArea());
   }
 
+  @Ignore("Ignoring currently")
   @Test
   public void testAssertEqualsWithString() {
-    assertEquals("Hello\nWorld\nAgain", "Hello\nWorld\nAgain");
+    assertEquals("Hello\nWorld\nAgain", "Hello\nWORLD\nAgain");
   }
 
   @Test
@@ -86,7 +89,7 @@ public class AssertionExamplesTest {
 
   @Test
   public void testAssertFail() {
-    // Assert.fail("This was never meant to happen.");
+    Assert.fail("This was never meant to happen.");
   }
 
   @Test
